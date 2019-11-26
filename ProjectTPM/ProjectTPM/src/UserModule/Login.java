@@ -12,7 +12,7 @@ public class Login extends JFrame {
     private JButton buttonTF;
     JPanel mainPanel;
     private JButton button2TF;
-    private UserFileRepository ficherito;
+    private UserFileRepository file;
 
     public Login() {
         super();
@@ -42,26 +42,25 @@ public class Login extends JFrame {
 
         String pass1 = (String.valueOf(pass));
         //ficherito= new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
-        ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+        file = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
         try {
             boolean login = false;
-            login = ficherito.login(user, pass1);
-            System.out.println("el valor final de login es..." + login);
             //if login is true -> opens a new window:  customer/admin/store
-            if (user.contains("admin") && ficherito.login(user, pass1)){
-
+            //the admin is loggin in
+            if (user.contains("admin") && file.login(user, pass1)){
                 //the admin exists and must open a new window
-                //System.out.println("the admin exists ");
-                JFrame ventanita3 = new JFrame("Register Store");
-                ventanita3.setContentPane(new RegisterStore().mainPanelS);
-                ventanita3.pack();
-                ventanita3.setVisible(true);
-                ventanita3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        }else{
+                JFrame windowRegStore = new JFrame("Register Store");
+                windowRegStore.setContentPane(new RegisterStore().mainPanelS);
+                windowRegStore.pack();
+                windowRegStore.setVisible(true);
+                windowRegStore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }else if(file.login(user, pass1)) { //a user or a store is in
+                //aqui debería abrir una ventana según si es cliente o tienda
+
+                login = true;
+                System.out.println("el valor final de login es..." + login);
 
         }
-
-
 
         }catch (IOException e) {
             e.printStackTrace();

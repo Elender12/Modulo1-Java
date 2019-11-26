@@ -19,16 +19,17 @@ public class Register {
         buttonRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //aquí debe añadir el usuario a la lista
+                //adds the customer to the list
                 String user= usernameTF.getText();
                 System.out.println(user);
                 char[] pass= passwordTF.getPassword();
                 String name = nameTF.getText();
-                Customer alfa = new Customer(user,String.valueOf(pass),name);
-                System.out.println(alfa.toString());
+                Customer customer = new Customer(user,String.valueOf(pass),name);
+                System.out.println(customer.toString());
                 try {
                     ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
-                    ficherito.create(alfa);
+                    ficherito.create(customer);
+                    //VERIFICAR PARA QUE VUELVA A LA PÁGINA DE LOGIN DESPUÉS DE REGISTRO
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
