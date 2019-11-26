@@ -41,8 +41,8 @@ public class Login extends JFrame {
             System.out.println(user);
 
             String pass1= (String.valueOf(pass));
-            ficherito= new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
-
+            //ficherito= new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+            ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
         try{
             boolean login= false;
             login= ficherito.login(user, pass1);

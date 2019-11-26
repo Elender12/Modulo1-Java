@@ -28,7 +28,7 @@ public class Register {
 
                 System.out.println(alfa.toString());
                 try {
-                    ficherito= new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+                    ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
 
                     ficherito.create(alfa);
                 } catch (IOException ex) {

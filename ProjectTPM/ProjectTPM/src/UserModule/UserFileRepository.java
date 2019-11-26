@@ -13,8 +13,8 @@ public class UserFileRepository implements  UserRepository{
 
     @Override
     public void create(User x) throws IOException {
+        //adds a user
         FileWriter fw = new FileWriter(filename, true);
-        //parece ser que el printer este es bastante fácil de utilizar
         PrintWriter pw = new PrintWriter(fw);
         pw.print(x.getUsername()+"\n");
         pw.print(x.getName()+"\n");
@@ -25,12 +25,12 @@ public class UserFileRepository implements  UserRepository{
 
     @Override
     public void remove(User x) throws IOException {
-        //este método es como el del profe
+        //remove the specified user
         File f = new File(this.filename);
         FileInputStream is = new FileInputStream(f);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
-        File ftemp = new File("C:\\Users\\Elena Cirstea\\Desktop\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
+        File ftemp = new File("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
         FileOutputStream os = new FileOutputStream(ftemp);
         PrintWriter pw = new PrintWriter(os);
         User current = User.check(br);
@@ -47,12 +47,12 @@ public class UserFileRepository implements  UserRepository{
         br.close();
         pw.close();
         os.close();
-        //porque en Mr.Windows no funciona el rename...
+        //rename the file in Windows
        Files.move(ftemp.toPath(), f.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 
     }
     @Override
-    //verifico quién entra en mi super mega tienda AppTPM
+    //checks who is going to log in into the app
     public boolean login(String username, String pass) throws IOException {
         File f = new File(this.filename);
         BufferedReader br = new BufferedReader(new FileReader(f));
@@ -63,7 +63,9 @@ public class UserFileRepository implements  UserRepository{
         boolean login=false;
         while (current != null) {
             if ((current.getUsername().equals(username)) && current.getPassword().equals(pass)) {
-                login =true;
+                if(current.getUsername().equals("adminE")&& current.getPassword().equals(pass))
+
+                    login =true;
             }
             current = User.check(br);
         }
@@ -77,7 +79,7 @@ public class UserFileRepository implements  UserRepository{
         Customer cst= new Customer("customer","000","usuario");
         Store str= new Store("storoo","09","tienda");
         Store str1= new Store("story","019","tienda147");
-        UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+        UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
         //Login ventanita=  new Login();
        //ventanita.setVisible(true);
        //ventanita.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,7 +94,7 @@ public class UserFileRepository implements  UserRepository{
 
 
         try {
-            ficherito.create(adm);
+            ficherito.create(cst);
             System.out.println("en el try");
             //ficherito.create(cst);
             //ficherito.create(str);

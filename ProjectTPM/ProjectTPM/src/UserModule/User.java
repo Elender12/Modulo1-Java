@@ -21,7 +21,7 @@ public abstract class User {
         this.username= username;
         this.password= pass;
     }
-    //getters y setters a mansalva...
+    //getters and setters
     public String getUsername() {
         return this.username;
     }
@@ -63,7 +63,8 @@ public abstract class User {
                 ", role: '" + role + '\'' +
                 '}';
     }
-    //leo del fichero y devuelvo lo que me encuentro para luego poder tener el listado de usuarios
+
+    //reads the file and returns the founded user
     public static User check(BufferedReader br) throws IOException {
         String username = br.readLine();
         if (username == null) {
@@ -85,9 +86,14 @@ public abstract class User {
         }
 
     }
-    //por fin podré darle un uso a este método totalmente inútil
+
     public  boolean equalTo(User x){
         return this.username.equals(x.username)&&this.password.equals(x.password) && this.name.equals(x.name)&& this.role.equals(x.role);
+    }
+    public boolean checkAdmin(){
+        boolean admin = false;
+
+        return admin;
 
     }
 
