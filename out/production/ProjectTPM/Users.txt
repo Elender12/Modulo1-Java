@@ -1,0 +1,12 @@
+admin
+123
+Ele
+admin
+cliente11
+11
+nombreCliente
+customer
+store11
+22
+StoreName
+store
