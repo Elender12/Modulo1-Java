@@ -70,7 +70,6 @@ public abstract class User {
         if (username == null) {
             return null;
         } else {
-
             String pass = br.readLine();
             String name = br.readLine();
             String role = br.readLine();

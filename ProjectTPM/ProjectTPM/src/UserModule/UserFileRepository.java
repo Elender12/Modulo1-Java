@@ -17,8 +17,8 @@ public class UserFileRepository implements  UserRepository{
         FileWriter fw = new FileWriter(filename, true);
         PrintWriter pw = new PrintWriter(fw);
         pw.print(x.getUsername()+"\n");
-        pw.print(x.getName()+"\n");
         pw.print(x.getPassword()+"\n");
+        pw.print(x.getName()+"\n");
         pw.print(x.getRole()+"\n");
         pw.close();
     }
@@ -61,9 +61,14 @@ public class UserFileRepository implements  UserRepository{
        // current.setPassword(pass);
         current = User.check(br);
         boolean login=false;
-        while (current != null) {
+
+        //there will be only an admin
+        if(username.equals("adminE")&& current.getPassword().equals(pass)){
+
+        }
+
+            while (current != null) {
             if ((current.getUsername().equals(username)) && current.getPassword().equals(pass)) {
-                if(current.getUsername().equals("adminE")&& current.getPassword().equals(pass))
 
                     login =true;
             }
@@ -93,7 +98,7 @@ public class UserFileRepository implements  UserRepository{
 
 
 
-        try {
+       /* try {
             ficherito.create(cst);
             System.out.println("en el try");
             //ficherito.create(cst);
@@ -106,6 +111,6 @@ public class UserFileRepository implements  UserRepository{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
     }
 }

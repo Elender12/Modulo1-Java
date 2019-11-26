@@ -25,11 +25,9 @@ public class Register {
                 char[] pass= passwordTF.getPassword();
                 String name = nameTF.getText();
                 Customer alfa = new Customer(user,String.valueOf(pass),name);
-
                 System.out.println(alfa.toString());
                 try {
                     ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
-
                     ficherito.create(alfa);
                 } catch (IOException ex) {
                     ex.printStackTrace();
