@@ -1,0 +1,16 @@
+Lena
+123
+Elena Ele
+Admin
+customer
+123
+ele
+Customer
+tienda
+123
+tiendanombre
+Store
+TiendaNull
+123
+NULL
+Store

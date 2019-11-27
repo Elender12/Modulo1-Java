@@ -64,7 +64,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="a9b94" class="javax.swing.JButton" binding="buttonTF">
+      <component id="a9b94" class="javax.swing.JButton" binding="buttonLogin">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -74,7 +74,7 @@
           <text value="Log in"/>
         </properties>
       </component>
-      <component id="be5d4" class="javax.swing.JButton" binding="button2TF">
+      <component id="be5d4" class="javax.swing.JButton" binding="buttonRegister">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

@@ -12,9 +12,6 @@ public abstract class User {
         this.username= username;
         this.password= password;
         this.name= name;
-       // this.role= role; hay que ver qué hago con este campo...
-        // creo que el set de cada clase soluciona el asunto
-
     }
     //constructor for Login method
     public User(String username, String pass){
@@ -73,11 +70,11 @@ public abstract class User {
             String pass = br.readLine();
             String name = br.readLine();
             String role = br.readLine();
-            if (role.equals("admin")) {
+            if (role.equals("Admin")) {
                 return new Admin(username, pass, name);
-            } else if (role.equals("customer")) {
+            } else if (role.equals("Customer")) {
                 return new Customer(username, pass, name);
-            } else if (role.equals("store")) {
+            } else if (role.equals("Store")) {
                 return new Store(username, pass, name);
             }else{
                 return null;

@@ -12,7 +12,7 @@ public class RegisterStore {
     private JTextField nameTF;
     private JButton registerStoreButton;
     private JButton deleteStoreButton;
-    private UserFileRepository ficherito;
+    private UserFileRepository file;
 
     public RegisterStore() {
         registerStoreButton.addActionListener(new ActionListener() {
@@ -21,12 +21,11 @@ public class RegisterStore {
                 System.out.println(user);
                 char[] pass= passTF.getPassword();
                 String name = nameTF.getText();
-                Store alfa = new Store(user,String.valueOf(pass),name);
+                Store store = new Store(user,String.valueOf(pass),name);
 
-                System.out.println(alfa.toString());
                 try {
-                    ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
-                    ficherito.create(alfa);
+                    file= new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
+                    file.create(store);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

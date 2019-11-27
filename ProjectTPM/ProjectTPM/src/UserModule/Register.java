@@ -27,7 +27,9 @@ public class Register {
                 Customer customer = new Customer(user,String.valueOf(pass),name);
                 System.out.println(customer.toString());
                 try {
-                    ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+                    //ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+                    ficherito= new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
+
                     ficherito.create(customer);
                     //VERIFICAR PARA QUE VUELVA A LA PÁGINA DE LOGIN DESPUÉS DE REGISTRO
                 } catch (IOException ex) {

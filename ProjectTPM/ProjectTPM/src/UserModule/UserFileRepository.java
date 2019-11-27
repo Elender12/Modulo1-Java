@@ -30,7 +30,8 @@ public class UserFileRepository implements  UserRepository{
         FileInputStream is = new FileInputStream(f);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
-        File ftemp = new File("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
+        //File ftemp = new File("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
+        File ftemp = new File("C:\\Users\\Elena Cirstea\\Desktop\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
         FileOutputStream os = new FileOutputStream(ftemp);
         PrintWriter pw = new PrintWriter(os);
         User current = User.check(br);
@@ -53,29 +54,32 @@ public class UserFileRepository implements  UserRepository{
     }
     @Override
     //checks who is going to log in into the app
-    public boolean login(String username, String pass) throws IOException {
+    public User login(String username, String pass) throws IOException {
+        User currentLoggedUser=null;
+        currentLoggedUser = checkUser(username, pass);
+        return currentLoggedUser;
+
+    }
+
+    @Override
+    public User checkUser(String username, String pass) throws IOException {
         File f = new File(this.filename);
         BufferedReader br = new BufferedReader(new FileReader(f));
-        User current= null;
-       // current.setUsername(username);
-       // current.setPassword(pass);
+        User current = null;
+        User loggedUser =null;
+        //lee los usuarios de los ficheros
         current = User.check(br);
-        boolean login=false;
-
-        //there will be only an admin
-        if(username.equals("adminE")&& current.getPassword().equals(pass)){
-
-        }
-
-            while (current != null) {
+        while (current != null) {
+            //busco si hay un usuario con los 2 parametros en el fichero
             if ((current.getUsername().equals(username)) && current.getPassword().equals(pass)) {
+                loggedUser = current;
 
-                    login =true;
             }
             current = User.check(br);
         }
         br.close();
-        return login;
+
+        return loggedUser;
     }
 
     // campo de pruebas :3
@@ -84,16 +88,16 @@ public class UserFileRepository implements  UserRepository{
         Customer cst= new Customer("customer","000","usuario");
         Store str= new Store("storoo","09","tienda");
         Store str1= new Store("story","019","tienda147");
-        UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+        UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
         //Login ventanita=  new Login();
        //ventanita.setVisible(true);
        //ventanita.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JFrame ventanita= new JFrame("Ventanita");
-        ventanita.setContentPane(new Login().mainPanel);
-        ventanita.setSize(500,500);
-        ventanita.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventanita.pack();
-        ventanita.setVisible(true);
+        Login mainWindow= new Login();
+        mainWindow.setContentPane(new Login().mainPanel);
+        mainWindow.setSize(700,600);
+        mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainWindow.pack();
+        mainWindow.setVisible(true);
 
 
 
