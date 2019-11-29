@@ -30,8 +30,8 @@ public class UserFileRepository implements  UserRepository{
         FileInputStream is = new FileInputStream(f);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
-        //File ftemp = new File("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
-        File ftemp = new File("C:\\Users\\Elena Cirstea\\Desktop\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
+        File ftemp = new File("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
+        //File ftemp = new File("C:\\Users\\Elena Cirstea\\Desktop\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\users-temporary.txt");
         FileOutputStream os = new FileOutputStream(ftemp);
         PrintWriter pw = new PrintWriter(os);
         User current = User.check(br);
@@ -88,12 +88,13 @@ public class UserFileRepository implements  UserRepository{
         Customer cst= new Customer("customer","000","usuario");
         Store str= new Store("storoo","09","tienda");
         Store str1= new Store("story","019","tienda147");
-        UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
-        //Login ventanita=  new Login();
+        //UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
+       UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
+        //LoginWindow ventanita=  new LoginWindow();
        //ventanita.setVisible(true);
        //ventanita.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Login mainWindow= new Login();
-        mainWindow.setContentPane(new Login().mainPanel);
+        LoginWindow mainWindow= new LoginWindow();
+       // mainWindow.setContentPane(new LoginWindow().mainPanel);
         mainWindow.setSize(700,600);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.pack();

@@ -13,7 +13,7 @@ public abstract class User {
         this.password= password;
         this.name= name;
     }
-    //constructor for Login method
+    //constructor for LoginWindow method
     public User(String username, String pass){
         this.username= username;
         this.password= pass;
