@@ -51,22 +51,20 @@ public class UserFileRepository implements  UserRepository{
         os.close();
         //rename the file in Windows
        Files.move(ftemp.toPath(), f.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-
     }
     @Override
     //checks who is going to log in into the app
     public User login(String username, String pass) throws IOException {
-        User currentLoggedUser=null;
+        User currentLoggedUser;
         currentLoggedUser = checkUser(username, pass);
         return currentLoggedUser;
-
     }
 
     @Override
     public User checkUser(String username, String pass) throws IOException {
         File f = new File(this.filename);
         BufferedReader br = new BufferedReader(new FileReader(f));
-        User current = null;
+        User current;
         User loggedUser =null;
         //lee los usuarios de los ficheros
         current = User.check(br);
@@ -74,12 +72,10 @@ public class UserFileRepository implements  UserRepository{
             //busco si hay un usuario con los 2 parametros en el fichero
             if ((current.getUsername().equals(username)) && current.getPassword().equals(pass)) {
                 loggedUser = current;
-
             }
             current = User.check(br);
         }
         br.close();
-
         return loggedUser;
     }
 
@@ -99,13 +95,8 @@ public class UserFileRepository implements  UserRepository{
         return result;
     }
 
-
-
-
-
-
     // campo de pruebas :3
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         Admin adm= new Admin("admin12","1234","Lena");
         Customer cst= new Customer("customer","000","usuario");
         Store str= new Store("storoo","09","tienda");
@@ -123,9 +114,6 @@ public class UserFileRepository implements  UserRepository{
         mainWindow.pack();
         mainWindow.setVisible(true);
 
-
-
-
        /* try {
             ficherito.create(cst);
             System.out.println("en el try");
@@ -139,6 +127,6 @@ public class UserFileRepository implements  UserRepository{
         } catch (IOException e) {
             e.printStackTrace();
         }
-*/
-    }
+
+    } */
 }

@@ -3,6 +3,7 @@ package UserModule;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 
@@ -10,7 +11,7 @@ public class LoginWindow extends JFrame {
     private JTextField userTF;
     private JPasswordField passTF;
     private JButton buttonLogin;
-    JPanel mainPanel;
+    public JPanel mainPanel;
     private JButton buttonRegister;
     private UserFileRepository file; //cambiar este nombre
 
@@ -24,16 +25,13 @@ public class LoginWindow extends JFrame {
         // passTF.setActionCommand(OK);
 
         //este es el register dentro del constructor??
-        buttonRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RegisterCustomer   ventanita2 = new RegisterCustomer();
-               // ventanita2.setContentPane(new RegisterCustomer().panelRegister);
-               // ventanita2.pack();
-               //ventanita2.setVisible(true);
-               // this.setVisible(false);
-               // ventanita2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            }
+        buttonRegister.addActionListener(e -> {
+            RegisterCustomer   ventanita2 = new RegisterCustomer();
+           // ventanita2.setContentPane(new RegisterCustomer().panelRegister);
+           // ventanita2.pack();
+           //ventanita2.setVisible(true);
+           // this.setVisible(false);
+           // ventanita2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         });
     }
 
@@ -58,28 +56,38 @@ public class LoginWindow extends JFrame {
             // System.out.println(userLogged.toString());
             if (userLogged != null) {
 
-                if (userLogged.getRole().equals("Admin")) {
-                    //the admin exists and must open a new window
-                    //JFrame windowRegStore = new JFrame("RegisterCustomer Store");
-                    LoginWindow adminWindow = new LoginWindow();
-                    //cambiar estos nombres
+                switch (userLogged.getRole()) {
+                    case "Admin":
+                        //the admin exists and must open a new window
+                        //JFrame windowRegStore = new JFrame("RegisterCustomer Store");
+                        LoginWindow adminWindow = new LoginWindow();
+                        //cambiar estos nombres
+                        adminWindow.setContentPane(new AdminWindow().mainPanelS);
+                        adminWindow.pack();
+                        adminWindow.setVisible(true);
+                        this.setVisible(false);
+                        adminWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                    adminWindow.setContentPane(new AdminWindow().mainPanelS);
-                    adminWindow.pack();
-                    adminWindow.setVisible(true);
-                    this.setVisible(false);
-                    adminWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-                } else if (userLogged.getRole().equals("Customer")) {
-                    //it's a customer
-                    System.out.println("I am a customer");
-                    //si es un cliente: abrir ventana de tiendas a elegir y luego el carrito
-                } else if (userLogged.getRole().equals("Store")) {
-                    //it's a store
-                    //si es una tienda: abrir ventana de productos
-
-                    //aqui va una ventada del tipo productsWindow
+                        break;
+                    case "Customer":
+                        //it's a customer
+                        System.out.println("I am a customer");
+                        //AÑADIR AQUI LAS VENTANAS
+                        //si es un cliente: abrir ventana de tiendas a elegir y luego el carrito
+                        break;
+                    case "Store":
+                        //it's a store
+                        String name = userLogged.getUsername() + ".txt";
+                        System.out.println(name);
+                        // File storeBD = new File("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule", name );
+                        //AÑADIR AQUI LAS VENTANAS
+                        //si es una tienda: abrir ventana de productos
+                        //aqui va una ventada del tipo productsWindow
+                        StoreWindow storeWindow = new StoreWindow();
+                        storeWindow.setContentPane(new StoreWindow().panelSW);
+                        storeWindow.pack();
+                        storeWindow.setVisible(true);
+                        break;
 
 
                 }

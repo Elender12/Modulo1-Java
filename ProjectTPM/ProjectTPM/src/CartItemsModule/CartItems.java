@@ -10,7 +10,5 @@ public class CartItems {
         this.customerName = customerName;
         this.quantity =  quantity;
         this.storeName= storeName;
-
-
     }
 }
