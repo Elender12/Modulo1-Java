@@ -24,7 +24,6 @@ public class ProductFileRepository implements ProductRepository {
         pw.print(product.getType()+"\n");
         pw.close();
 
-
     }
 
     @Override

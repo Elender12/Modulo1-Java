@@ -74,13 +74,24 @@ public class LoginWindow extends JFrame {
                         System.out.println("I am a customer");
                         //AÑADIR AQUI LAS VENTANAS
                         //si es un cliente: abrir ventana de tiendas a elegir y luego el carrito
+                        //vamos a crearle un fichero también
+                        //se le abre una ventana
+                        String storesPath= "C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt";
+                        CustomerWindow customerWindow = new CustomerWindow(storesPath);
+                        customerWindow.setContentPane(new CustomerWindow(storesPath).storeList);
+                        customerWindow.pack();
+                        customerWindow.setVisible(true);
+
+
+
+
                         break;
                     case "Store":
                         //it's a store
-                        String path = "C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\"+userLogged.getUsername()+".txt";
+                        String path = "C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\StoreProducts\\"+userLogged.getUsername()+".txt";
                         String storeName = userLogged.getUsername();
-                        System.out.println(path);
-                        System.out.println(storeName);
+                        //System.out.println(path);
+                        //System.out.println(storeName);
                         //Creates a file for each store
                         File storeBD = new File(path);
                         if(storeBD.createNewFile()){

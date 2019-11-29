@@ -1,6 +1,7 @@
 package UserModule;
 
 import ProductModule.*;
+import javafx.beans.binding.DoubleExpression;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Currency;
 
 public class StoreWindow extends JFrame {
      JPanel panelSW;
@@ -24,6 +26,8 @@ public class StoreWindow extends JFrame {
     public StoreWindow(String path, String storeName) {
         super("Store Panel Control");
         productFRepository = new ProductFileRepository(path);
+        //tableProducts.setDefaultEditor(Double.class,
+          //      new Currency(0, 100));
         this.refreshData();
 
         try{
@@ -40,10 +44,6 @@ public class StoreWindow extends JFrame {
 
         //add product
         addProductButton.addActionListener(actionEvent -> {
-            //  File f = new File(productFRepositor);
-            //ileInputStream is = new FileInputStream(f);
-          //  InputStreamReader isr = new InputStreamReader(is);
-           // BufferedReader br = new BufferedReader(isr);
             String prodName = prodNameTF.getText();
             String descr = descrTF.getText();
            Double price = 0.0;
@@ -80,9 +80,7 @@ public class StoreWindow extends JFrame {
                 prodNameTF.setText("");
                 descrTF.setText("");
                 priceTF.setText("");
-              //  storeTF.setText("");
                 typeTF.setText("");
-
 
             } catch (ProductTypeException | IOException e) {
                 e.printStackTrace();
