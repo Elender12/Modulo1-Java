@@ -15,6 +15,7 @@ public class ProductFileRepository implements ProductRepository {
     public void add(Product product) throws IOException {
         FileWriter fw = new FileWriter(filename, true);
         PrintWriter pw = new PrintWriter(fw);
+        //para cada tienda hay una lista de productos
         //debe escribir en el fichero de la tienda
 
 
