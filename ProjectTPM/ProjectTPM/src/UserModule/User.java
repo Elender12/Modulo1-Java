@@ -1,7 +1,10 @@
 package UserModule;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public abstract class User {
     private String username;
@@ -86,11 +89,7 @@ public abstract class User {
     public  boolean equalTo(User x){
         return this.username.equals(x.username)&&this.password.equals(x.password) && this.name.equals(x.name)&& this.role.equals(x.role);
     }
-    public boolean checkAdmin(){
-        boolean admin = false;
 
-        return admin;
 
-    }
 
 }

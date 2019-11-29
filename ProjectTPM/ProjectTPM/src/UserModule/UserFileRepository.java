@@ -3,6 +3,7 @@ package UserModule;
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
 public class UserFileRepository implements  UserRepository{
     private String filename; //path to the file
@@ -82,6 +83,27 @@ public class UserFileRepository implements  UserRepository{
         return loggedUser;
     }
 
+    public ArrayList<User> getStoreList() throws IOException {
+        FileInputStream is = new FileInputStream(this.filename);
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        ArrayList<User> result = new ArrayList<>();
+        User current = User.check(br);
+        while (current != null) {
+            if(current.getRole().equals("Store")){
+                result.add(current);
+            }
+            current = User.check(br);
+        }
+        br.close();
+        return result;
+    }
+
+
+
+
+
+
     // campo de pruebas :3
     public static void main(String[] args) {
         Admin adm= new Admin("admin12","1234","Lena");
@@ -93,8 +115,9 @@ public class UserFileRepository implements  UserRepository{
         //LoginWindow ventanita=  new LoginWindow();
        //ventanita.setVisible(true);
        //ventanita.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         LoginWindow mainWindow= new LoginWindow();
-       // mainWindow.setContentPane(new LoginWindow().mainPanel);
+        mainWindow.setContentPane(new LoginWindow().mainPanel);
         mainWindow.setSize(700,600);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.pack();

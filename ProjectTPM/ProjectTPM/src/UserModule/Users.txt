@@ -14,3 +14,15 @@ TiendaNull
 123
 NULL
 Store
+Perico
+123
+PericoTienda
+Store
+ttt
+sf
+store List otra
+Store
+otra tienda
+23
+otra tienda nombre
+Store

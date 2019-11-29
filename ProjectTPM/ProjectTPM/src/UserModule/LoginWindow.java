@@ -10,7 +10,7 @@ public class LoginWindow extends JFrame {
     private JTextField userTF;
     private JPasswordField passTF;
     private JButton buttonLogin;
-    //JPanel mainPanel;
+    JPanel mainPanel;
     private JButton buttonRegister;
     private UserFileRepository file; //cambiar este nombre
 
@@ -61,14 +61,14 @@ public class LoginWindow extends JFrame {
                 if (userLogged.getRole().equals("Admin")) {
                     //the admin exists and must open a new window
                     //JFrame windowRegStore = new JFrame("RegisterCustomer Store");
-                    LoginWindow windowRegStore = new LoginWindow();
+                    LoginWindow adminWindow = new LoginWindow();
                     //cambiar estos nombres
 
-                    windowRegStore.setContentPane(new RegisterStore().mainPanelS);
-                    windowRegStore.pack();
-                    windowRegStore.setVisible(true);
+                    adminWindow.setContentPane(new AdminWindow().mainPanelS);
+                    adminWindow.pack();
+                    adminWindow.setVisible(true);
                     this.setVisible(false);
-                    windowRegStore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    adminWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
                 } else if (userLogged.getRole().equals("Customer")) {
