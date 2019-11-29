@@ -77,14 +77,19 @@ public class LoginWindow extends JFrame {
                         break;
                     case "Store":
                         //it's a store
-                        String name = userLogged.getUsername() + ".txt";
-                        System.out.println(name);
-                        // File storeBD = new File("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule", name );
-                        //AÑADIR AQUI LAS VENTANAS
-                        //si es una tienda: abrir ventana de productos
-                        //aqui va una ventada del tipo productsWindow
-                        StoreWindow storeWindow = new StoreWindow();
-                        storeWindow.setContentPane(new StoreWindow().panelSW);
+                        String path = "C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\"+userLogged.getUsername()+".txt";
+                        String storeName = userLogged.getUsername();
+                        System.out.println(path);
+                        System.out.println(storeName);
+                        //Creates a file for each store
+                        File storeBD = new File(path);
+                        if(storeBD.createNewFile()){
+                            System.out.println("The store has a new file.");
+                        }else {
+                            System.out.println("The store already has a file.");
+                        }
+                        StoreWindow storeWindow = new StoreWindow(path, storeName);
+                        storeWindow.setContentPane(new StoreWindow(path, storeName).panelSW);
                         storeWindow.pack();
                         storeWindow.setVisible(true);
                         break;

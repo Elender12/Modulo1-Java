@@ -3,29 +3,40 @@ package UserModule;
 import ProductModule.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 
 public class StoreWindow extends JFrame {
      JPanel panelSW;
     private JTextField prodNameTF;
     private JTextField descrTF;
     private JTextField priceTF;
-    private JTextField storeTF;
+    //private JTextField storeTF;
     private JTextField typeTF;
     private JButton addProductButton;
-    private JTable table1;
+    private JTable tableProducts;
     private JButton deleteProductButton;
     private ProductFileRepository productFRepository;
 
-    public StoreWindow() {
+    public StoreWindow(String path, String storeName) {
         super("Store Panel Control");
-        productFRepository = new ProductFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule");
+        productFRepository = new ProductFileRepository(path);
+        this.refreshData();
 
+        try{
+            ArrayList<Product> data = productFRepository.getProductList();
+            String[] columnNames = {"Name","Description","Price","Store Name","Type"};
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+            tableProducts.setModel(tableModel);
+            for (Product product : data) {
+                tableModel.addRow(new Object[]{product.getName(),product.getDescription(),product.getPrice(),product.getStoreName(),product.getType()});
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
         //add product
         addProductButton.addActionListener(actionEvent -> {
@@ -35,34 +46,63 @@ public class StoreWindow extends JFrame {
            // BufferedReader br = new BufferedReader(isr);
             String prodName = prodNameTF.getText();
             String descr = descrTF.getText();
-            double price = Double.parseDouble(priceTF.getText());
-            String store = storeTF.getText();
+           Double price = 0.0;
+            try {
+                price = Double.parseDouble(priceTF.getText());
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "That price isn't correct.");
+                nfe.printStackTrace();
+            }
+            //String store = storeTF.getText();
 
             String type = typeTF.getText();
             try {
                 switch (type) {
                     case "dessert": {
-                        Dessert product = new Dessert(prodName, descr, price, store);
+                        Dessert product = new Dessert(prodName, descr, price, storeName);
+                        productFRepository.add(product);
                         break;
                     }
                     case "food": {
-                        Food product = new Food(prodName, descr, price, store);
+                        Food product = new Food(prodName, descr, price, storeName);
+                        productFRepository.add(product);
                         break;
                     }
                     case "drink": {
-                        Drink product = new Drink(prodName, descr, price, store);
+                        Drink product = new Drink(prodName, descr, price, storeName);
+                        productFRepository.add(product);
                         break;
                     }
                     default:
                         throw new ProductTypeException("The product type does NOT exists.");
                 }
+                refreshData();
+                prodNameTF.setText("");
+                descrTF.setText("");
+                priceTF.setText("");
+              //  storeTF.setText("");
+                typeTF.setText("");
 
-                //productFRepository.add();
 
-            } catch (ProductTypeException e) {
+            } catch (ProductTypeException | IOException e) {
                 e.printStackTrace();
             }
         });
     }
+    private void refreshData(){
+        try{
+            ArrayList<Product> data = productFRepository.getProductList();
+            String[] columnNames = {"Name","Description","Price","Store Name","Type"};
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+            tableProducts.setModel(tableModel);
+
+            for (Product product : data) {
+                tableModel.addRow(new Object[]{product.getName(),product.getDescription(),product.getPrice(),product.getStoreName(),product.getType()});
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
 }

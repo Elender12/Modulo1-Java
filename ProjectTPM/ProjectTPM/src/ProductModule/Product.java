@@ -60,6 +60,17 @@ public abstract class Product {
         this.type = type;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", storeName='" + storeName + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
+
     //checks the type of the drink
     public static Product check(BufferedReader br) throws IOException {
         String name = br.readLine();
