@@ -79,6 +79,35 @@ public class UserFileRepository implements  UserRepository{
         return loggedUser;
     }
 
+    public User checkStore(String username) throws IOException {
+        File f = new File(this.filename);
+        BufferedReader br = new BufferedReader(new FileReader(f));
+        User current;
+        User chosenStore =null;
+        //lee los usuarios de los ficheros
+        current = User.check(br);
+        while (current != null) {
+            //busco si hay un usuario con los 2 parametros en el fichero
+            if ((current.getUsername().equals(username))) {
+                chosenStore = current;
+            }
+            current = User.check(br);
+        }
+        br.close();
+        return chosenStore;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public ArrayList<User> getStoreList() throws IOException {
         FileInputStream is = new FileInputStream(this.filename);
         InputStreamReader isr = new InputStreamReader(is);
