@@ -13,8 +13,6 @@ public class ProductFileRepository implements ProductRepository {
 
     @Override
     public void add(Product product) throws IOException {
-        //para cada tienda hay una lista de productos
-        //debe escribir en el fichero de la tienda
         FileWriter fw = new FileWriter(file_path, true);
         PrintWriter pw = new PrintWriter(fw);
         pw.print(product.getName()+"\n");

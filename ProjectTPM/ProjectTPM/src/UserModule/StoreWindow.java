@@ -28,13 +28,14 @@ public class StoreWindow extends JFrame {
         productFRepository = new ProductFileRepository(path);
         //tableProducts.setDefaultEditor(Double.class,
           //      new Currency(0, 100));
-        this.refreshData();
 
+        String[] columnNames = {"Name","Description","Price","Store Name","Type"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        tableProducts.setModel(tableModel);
+        this.refreshData();
         try{
             ArrayList<Product> data = productFRepository.getProductList();
-            String[] columnNames = {"Name","Description","Price","Store Name","Type"};
-            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-            tableProducts.setModel(tableModel);
+
             for (Product product : data) {
                 tableModel.addRow(new Object[]{product.getName(),product.getDescription(),product.getPrice(),product.getStoreName(),product.getType()});
             }
@@ -84,6 +85,18 @@ public class StoreWindow extends JFrame {
 
             } catch (ProductTypeException | IOException e) {
                 e.printStackTrace();
+            }
+        });
+        deleteProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (tableProducts.getSelectedRow() != -1) {
+                    // remove selected row from the model
+                    tableProducts.setModel(tableModel);
+                    tableModel.removeRow(tableProducts.getSelectedRow());
+                    JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
+                    // refreshData();
+                }
             }
         });
     }

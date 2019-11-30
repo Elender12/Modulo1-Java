@@ -5,8 +5,8 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         Admin adm= new Admin("admin12","1234","Lena");
-        Customer cst= new Customer("customer","000","usuario");
-        Store str= new Store("storeUn","09","tienda");
+      //  Customer cst= new Customer("customer","000","usuario");
+       // Store str= new Store("storeUn","09","tienda");
 
         //UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
         UserFileRepository ficherito = new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");

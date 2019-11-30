@@ -54,7 +54,7 @@ public abstract class User {
         this.role = role;
     }
 
-    //borrar este método cuando funcionen las ventanas
+
     @Override
     public String toString() {
         return "username: '" + username + '\'' +
