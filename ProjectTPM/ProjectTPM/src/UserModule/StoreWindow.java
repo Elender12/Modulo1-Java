@@ -26,9 +26,6 @@ public class StoreWindow extends JFrame {
     public StoreWindow(String path, String storeName) {
         super("Store Panel Control");
         productFRepository = new ProductFileRepository(path);
-        //tableProducts.setDefaultEditor(Double.class,
-          //      new Currency(0, 100));
-
         String[] columnNames = {"Name","Description","Price","Store Name","Type"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
         tableProducts.setModel(tableModel);

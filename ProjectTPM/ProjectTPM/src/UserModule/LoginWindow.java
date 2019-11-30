@@ -15,7 +15,7 @@ public class LoginWindow extends JFrame {
     private UserFileRepository userFileRepository;
 
     public LoginWindow() {
-        super();
+        super("Login Window");
         this.buttonLogin.setText("Log in");
 
         // login
@@ -84,6 +84,7 @@ public class LoginWindow extends JFrame {
                         StoreWindow storeWindow = new StoreWindow(path, storeName);
                         storeWindow.setContentPane(new StoreWindow(path, storeName).panelSW);
                         storeWindow.pack();
+                        this.setVisible(false);
                         storeWindow.setVisible(true);
                         break;
                 }

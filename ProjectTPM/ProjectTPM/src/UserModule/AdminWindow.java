@@ -15,7 +15,6 @@ public class AdminWindow extends JFrame {
     private JButton registerStoreButton;
     private JButton deleteStoreButton;
     private JTable userTable;
-    private JTextField toDeleteStore;
     private UserFileRepository userFileRepository;
 
     public AdminWindow() {

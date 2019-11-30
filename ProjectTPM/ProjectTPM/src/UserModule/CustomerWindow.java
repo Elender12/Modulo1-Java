@@ -15,29 +15,25 @@ public class CustomerWindow  extends  JFrame{
     private JTable tableStore;
     private JButton selectStoreButton;
     private JTable tableProducts;
+    private JButton openCartButton;
+    private JButton openCartButton1;
     private UserFileRepository userFileRepository;
     private ProductFileRepository productFileRepository;
+
 
     public CustomerWindow (String path){
         super("Customer Panel");
         this.userFileRepository = new UserFileRepository(path);
-      //this.refreshData();
+        //this.refreshData();
         String[] columnNames = {"Username","Name"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        // tableModel.getDataVector().elementAt(tableStore.getSelectedRow());
         tableStore.setModel(tableModel);
-
-
         try{
             ArrayList<User> storeList;
             storeList = userFileRepository.getStoreList();
-
-
             for (User user : storeList) {
                 tableModel.addRow(new Object[]{user.getUsername(), user.getName()});
             }
-
-
 
             }catch (IOException e) {
             e.printStackTrace();
@@ -86,9 +82,35 @@ public class CustomerWindow  extends  JFrame{
                     e.printStackTrace();
                 }
                 //opens a new window
-
             }
         });
 
+        openCartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int rowIndexP = tableProducts.getSelectedRow();
+                int colIndexP= tableProducts.getSelectedColumn();
+                //shows the index
+                tableProducts.getValueAt(rowIndexP,colIndexP);
+                String productName = tableProducts.getModel().getValueAt(rowIndexP, colIndexP).toString();
+                ArrayList <String> products = new ArrayList<>();
+                products.add(productName);
+                System.out.println(productName);
+                int quantity;
+                for (String product : products) {
+                    System.out.println(product);
+                }
+            }
+        });
+        openCartButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                CartWindow cw = new CartWindow();
+                cw.setContentPane(new CartWindow().cartWindow);
+                cw.pack();
+                cw.setVisible(true);
+
+            }
+        });
     }
 }
