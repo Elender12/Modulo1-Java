@@ -2,35 +2,35 @@ Lena
 123
 Elena Ele
 Admin
-customer
+ClienteNocturno
 123
-ele
+Elena
 Customer
-tienda
+Store1
 123
-tiendanombre
+Store1
 Store
-TiendaNull
+Store2
 123
-NULL
+Store2
 Store
-Perico
+kkkkk
 123
-PericoTienda
+lll
+Customer
+tenda
+rr
+wwww
 Store
-ttt
-sf
-store List otra
+wewew
+wew
+wewew
 Store
-otra tienda
-23
-otra tienda nombre
+cx
+xc
+xcx
 Store
-tienda333
-222
-tienda tres
-Store
-testest
-33
-test
+ewew
+wew
+ewew
 Store

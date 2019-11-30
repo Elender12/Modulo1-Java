@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class RegisterCustomer {
+public class RegisterCustomer extends JFrame{
     private JTextField usernameTF;
     private JPasswordField passwordTF;
     private JTextField nameTF;
@@ -27,7 +27,7 @@ public class RegisterCustomer {
                 Customer customer = new Customer(user,String.valueOf(pass),name);
                 System.out.println(customer.toString());
                 try {
-                    ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\Users.txt");
+                    ficherito= new UserFileRepository("C:\\Users\\Ele\\Desktop\\Universidad\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
                   //  ficherito= new UserFileRepository("C:\\Users\\Elena Cirstea\\Desktop\\Modulo1-Java\\ProjectTPM\\ProjectTPM\\src\\UserModule\\Users.txt");
 
                     ficherito.create(customer);
